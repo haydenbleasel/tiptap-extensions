@@ -1,32 +1,32 @@
-import { Node, mergeAttributes } from '@tiptap/core';
+import { Node, mergeAttributes } from "@tiptap/core";
 
 export const Media = Node.create({
-  name: 'media',
-  group: 'block',
-  atom: true,
   addAttributes() {
     return {
-      id: { default: null },
       alt: { default: null },
-      type: { default: 'file' },
-      width: { default: null },
-      height: { default: null },
       collection: { default: null },
+      height: { default: null },
+      id: { default: null },
+      type: { default: "file" },
+      width: { default: null },
     };
   },
+  atom: true,
+  group: "block",
+  name: "media",
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
-    return [{ tag: 'img' }];
+    return [{ tag: "img" }];
   },
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ node, HTMLAttributes }) {
     return [
-      'img',
+      "img",
       mergeAttributes(HTMLAttributes, {
-        src: node.attrs.id,
         alt: node.attrs.alt,
-        width: node.attrs.width,
         height: node.attrs.height,
+        src: node.attrs.id,
+        width: node.attrs.width,
       }),
     ];
   },

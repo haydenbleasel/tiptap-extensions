@@ -1,15 +1,15 @@
-import { Node, mergeAttributes } from '@tiptap/core';
+import { Node, mergeAttributes } from "@tiptap/core";
 
 export const DateNode = Node.create({
-  name: 'date',
-  group: 'inline',
-  inline: true,
-  atom: true,
   addAttributes() {
     return {
       timestamp: { default: null },
     };
   },
+  atom: true,
+  group: "inline",
+  inline: true,
+  name: "date",
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
     return [{ tag: 'time[data-type="date"]' }];
@@ -17,12 +17,12 @@ export const DateNode = Node.create({
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ node, HTMLAttributes }) {
     return [
-      'time',
+      "time",
       mergeAttributes(HTMLAttributes, {
-        'data-type': 'date',
+        "data-type": "date",
         datetime: node.attrs.timestamp,
       }),
-      new Date(Number.parseInt(node.attrs.timestamp)).toLocaleDateString(),
+      new Date(Number.parseInt(node.attrs.timestamp, 10)).toLocaleDateString(),
     ];
   },
 });

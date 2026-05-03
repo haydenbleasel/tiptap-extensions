@@ -1,11 +1,6 @@
-import { Node, mergeAttributes } from '@tiptap/core';
+import { Node, mergeAttributes } from "@tiptap/core";
 
 export const Iframely = Node.create({
-  name: 'iframely',
-  group: 'block',
-  atom: true,
-  draggable: true,
-
   addAttributes() {
     return {
       src: {
@@ -13,6 +8,10 @@ export const Iframely = Node.create({
       },
     };
   },
+  atom: true,
+  draggable: true,
+  group: "block",
+  name: "iframely",
 
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap extension property"
   parseHTML() {
@@ -26,8 +25,8 @@ export const Iframely = Node.create({
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap extension property"
   renderHTML({ HTMLAttributes }) {
     return [
-      'div',
-      mergeAttributes(HTMLAttributes, { 'data-type': 'iframely-embed' }),
+      "div",
+      mergeAttributes(HTMLAttributes, { "data-type": "iframely-embed" }),
     ];
   },
 });

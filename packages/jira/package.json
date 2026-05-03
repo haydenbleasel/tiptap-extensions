@@ -2,7 +2,28 @@
   "name": "tiptap-extension-jira",
   "version": "1.0.10",
   "description": "A collection of Tiptap extensions enabling bidirectional sync with Jira.",
-  "files": ["dist"],
+  "keywords": [
+    "extension",
+    "jira",
+    "tiptap"
+  ],
+  "homepage": "https://github.com/haydenbleasel/tiptap-extensions/tree/main/packages/jira#readme",
+  "bugs": {
+    "url": "https://github.com/haydenbleasel/tiptap-extensions/issues"
+  },
+  "license": "ISC",
+  "author": "Hayden Bleasel <hello@haydenbleasel.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydenbleasel/tiptap-extensions.git",
+    "directory": "packages/jira"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
@@ -25,9 +46,6 @@
       }
     }
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "dist/index.d.ts",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -38,18 +56,6 @@
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/haydenbleasel/tiptap-extensions.git",
-    "directory": "packages/jira"
-  },
-  "keywords": ["jira", "tiptap", "extension"],
-  "author": "Hayden Bleasel <hello@haydenbleasel.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/haydenbleasel/tiptap-extensions/issues"
-  },
-  "homepage": "https://github.com/haydenbleasel/tiptap-extensions/tree/main/packages/jira#readme",
   "devDependencies": {
     "@tiptap/core": "^2.10.3",
     "@tiptap/extension-mention": "^2.10.3",

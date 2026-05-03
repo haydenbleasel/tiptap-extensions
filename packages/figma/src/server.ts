@@ -1,10 +1,6 @@
-import { Node, mergeAttributes } from '@tiptap/core';
+import { Node, mergeAttributes } from "@tiptap/core";
 
 export const Figma = Node.create({
-  name: 'figma',
-  group: 'block',
-  atom: true,
-
   addAttributes() {
     return {
       src: {
@@ -12,6 +8,9 @@ export const Figma = Node.create({
       },
     };
   },
+  atom: true,
+  group: "block",
+  name: "figma",
 
   // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
   parseHTML() {
@@ -25,11 +24,11 @@ export const Figma = Node.create({
   // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
   renderHTML({ HTMLAttributes }) {
     return [
-      'iframe',
+      "iframe",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
-        width: '800',
-        height: '450',
-        allowfullscreen: 'true',
+        allowfullscreen: "true",
+        height: "450",
+        width: "800",
       }),
     ];
   },

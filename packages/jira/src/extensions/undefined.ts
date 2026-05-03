@@ -1,13 +1,13 @@
-import { Node, mergeAttributes } from '@tiptap/core';
+import { Node, mergeAttributes } from "@tiptap/core";
 
 export const UndefinedNode = Node.create({
-  name: 'undefined',
-  group: 'inline',
-  inline: true,
-  atom: true,
   addAttributes() {
     return {};
   },
+  atom: true,
+  group: "inline",
+  inline: true,
+  name: "undefined",
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
     return [{ tag: 'span[data-type="undefined"]' }];
@@ -15,9 +15,9 @@ export const UndefinedNode = Node.create({
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ HTMLAttributes }) {
     return [
-      'span',
-      mergeAttributes(HTMLAttributes, { 'data-type': 'undefined' }),
-      '',
+      "span",
+      mergeAttributes(HTMLAttributes, { "data-type": "undefined" }),
+      "",
     ];
   },
 });

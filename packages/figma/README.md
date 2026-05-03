@@ -17,7 +17,7 @@ pnpm add tiptap-extension-figma
 ### Client
 
 ```ts
-import { Figma } from 'tiptap-extension-figma';
+import { Figma } from "tiptap-extension-figma";
 
 const editor = new Editor({
   extensions: [Figma],
@@ -41,7 +41,7 @@ I also recommend adding the following Tailwind CSS to your project:
 If you are running this in a headless environment, you can use the Server extension instead:
 
 ```ts
-import { Figma } from 'tiptap-extension-figma/server';
+import { Figma } from "tiptap-extension-figma/server";
 
 const editor = new Editor({
   extensions: [Figma],

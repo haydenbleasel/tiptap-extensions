@@ -1,13 +1,13 @@
-import { Mark, mergeAttributes } from '@tiptap/core';
+import { Mark, mergeAttributes } from "@tiptap/core";
 
 export const Em = Mark.create({
-  name: 'em',
+  name: "em",
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
-    return [{ tag: 'em' }];
+    return [{ tag: "em" }];
   },
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ HTMLAttributes }) {
-    return ['em', mergeAttributes(HTMLAttributes), 0];
+    return ["em", mergeAttributes(HTMLAttributes), 0];
   },
 });

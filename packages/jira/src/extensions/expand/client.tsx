@@ -1,32 +1,12 @@
-import { Node, mergeAttributes } from '@tiptap/core';
-import {
-  type NodeViewProps,
-  NodeViewWrapper,
-  ReactNodeViewRenderer,
-} from '@tiptap/react';
+import { Node, mergeAttributes } from "@tiptap/core";
+import { NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react";
+import type { NodeViewProps } from "@tiptap/react";
 
 export const ExpandClient = Node.create({
-  name: 'expand',
-  group: 'block',
-  content: 'block+',
   addAttributes() {
     return {
       title: { default: null },
     };
-  },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap node property"
-  parseHTML() {
-    return [{ tag: 'div[data-expand-title]' }];
-  },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap node property"
-  renderHTML({ node, HTMLAttributes }) {
-    return [
-      'div',
-      mergeAttributes(HTMLAttributes, {
-        'data-expand-title': node.attrs.title,
-      }),
-      0,
-    ];
   },
   addNodeView() {
     return ReactNodeViewRenderer(({ node }: NodeViewProps) => (
@@ -41,5 +21,22 @@ export const ExpandClient = Node.create({
         </details>
       </NodeViewWrapper>
     ));
+  },
+  content: "block+",
+  group: "block",
+  name: "expand",
+  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap node property"
+  parseHTML() {
+    return [{ tag: "div[data-expand-title]" }];
+  },
+  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap node property"
+  renderHTML({ node, HTMLAttributes }) {
+    return [
+      "div",
+      mergeAttributes(HTMLAttributes, {
+        "data-expand-title": node.attrs.title,
+      }),
+      0,
+    ];
   },
 });

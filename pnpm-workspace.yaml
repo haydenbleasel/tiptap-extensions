@@ -1,5 +1,5 @@
 packages:
   - "packages/*"
 allowBuilds:
-  '@biomejs/biome': true
+  "@biomejs/biome": true
   esbuild: true

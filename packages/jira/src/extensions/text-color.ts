@@ -1,7 +1,6 @@
-import { Mark, mergeAttributes } from '@tiptap/core';
+import { Mark, mergeAttributes } from "@tiptap/core";
 
 export const TextColor = Mark.create({
-  name: 'textColor',
   addAttributes() {
     return {
       color: {
@@ -9,18 +8,17 @@ export const TextColor = Mark.create({
         // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
         parseHTML: (element) => element.style.color,
         // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
-        renderHTML: (attributes) => {
-          return { style: `color: ${attributes.color}` };
-        },
+        renderHTML: (attributes) => ({ style: `color: ${attributes.color}` }),
       },
     };
   },
+  name: "textColor",
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
-    return [{ style: 'color' }];
+    return [{ style: "color" }];
   },
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ HTMLAttributes }) {
-    return ['span', mergeAttributes(HTMLAttributes), 0];
+    return ["span", mergeAttributes(HTMLAttributes), 0];
   },
 });

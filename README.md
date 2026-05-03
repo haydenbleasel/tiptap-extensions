@@ -6,11 +6,11 @@ A collection of [Tiptap](https://tiptap.dev/) extensions, versioned and released
 
 ## Packages
 
-| Package | Version | Description |
-|---------|---------|-------------|
-| [`tiptap-extension-iframely`](./packages/iframely) | [![npm](https://img.shields.io/npm/v/tiptap-extension-iframely.svg)](https://www.npmjs.com/package/tiptap-extension-iframely) | Embedded content via Iframely |
-| [`tiptap-extension-figma`](./packages/figma) | [![npm](https://img.shields.io/npm/v/tiptap-extension-figma.svg)](https://www.npmjs.com/package/tiptap-extension-figma) | Hydrate Figma links into embeds |
-| [`tiptap-extension-jira`](./packages/jira) | [![npm](https://img.shields.io/npm/v/tiptap-extension-jira.svg)](https://www.npmjs.com/package/tiptap-extension-jira) | Bidirectional sync with Jira (ADF) |
+| Package                                            | Version                                                                                                                       | Description                        |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| [`tiptap-extension-iframely`](./packages/iframely) | [![npm](https://img.shields.io/npm/v/tiptap-extension-iframely.svg)](https://www.npmjs.com/package/tiptap-extension-iframely) | Embedded content via Iframely      |
+| [`tiptap-extension-figma`](./packages/figma)       | [![npm](https://img.shields.io/npm/v/tiptap-extension-figma.svg)](https://www.npmjs.com/package/tiptap-extension-figma)       | Hydrate Figma links into embeds    |
+| [`tiptap-extension-jira`](./packages/jira)         | [![npm](https://img.shields.io/npm/v/tiptap-extension-jira.svg)](https://www.npmjs.com/package/tiptap-extension-jira)         | Bidirectional sync with Jira (ADF) |
 
 ## Development
 

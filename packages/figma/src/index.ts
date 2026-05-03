@@ -1,7 +1,7 @@
-import { InputRule, Node, mergeAttributes } from '@tiptap/core';
-import { Plugin, PluginKey } from '@tiptap/pm/state';
+import { InputRule, Node, mergeAttributes } from "@tiptap/core";
+import { Plugin, PluginKey } from "@tiptap/pm/state";
 
-declare module '@tiptap/core' {
+declare module "@tiptap/core" {
   interface Commands<ReturnType> {
     figma: {
       setFigma: (options: { src: string }) => ReturnType;
@@ -14,42 +14,16 @@ const figmaRegex =
   /https:\/\/[\w.-]+\.?figma.com\/([\w-]+)\/([0-9a-zA-Z]{22,128})(?:\/.*)?$/;
 
 const createEmbedSrc = (url: string) => {
-  const embedUrl = new URL('https://www.figma.com/embed');
+  const embedUrl = new URL("https://www.figma.com/embed");
 
-  embedUrl.searchParams.set('embed_host', 'tiptap');
-  embedUrl.searchParams.set('embed_origin', window.location.origin);
-  embedUrl.searchParams.set('url', url);
+  embedUrl.searchParams.set("embed_host", "tiptap");
+  embedUrl.searchParams.set("embed_origin", window.location.origin);
+  embedUrl.searchParams.set("url", url);
 
   return embedUrl.toString();
 };
 
 export const Figma = Node.create({
-  name: 'figma',
-  group: 'block',
-  atom: true,
-
-  addCommands() {
-    return {
-      setFigma:
-        (options) =>
-        ({ commands }) => {
-          return commands.insertContent({
-            type: this.name,
-            attrs: options,
-          });
-        },
-
-      unsetFigma:
-        () =>
-        ({ commands }) => {
-          return commands.deleteRange({
-            from: 0,
-            to: -1,
-          });
-        },
-    };
-  },
-
   addAttributes() {
     return {
       src: {
@@ -58,25 +32,24 @@ export const Figma = Node.create({
     };
   },
 
-  // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
-  parseHTML() {
-    return [
-      {
-        tag: 'iframe[src*="figma.com"]',
-      },
-    ];
-  },
+  addCommands() {
+    return {
+      setFigma:
+        (options) =>
+        ({ commands }) =>
+          commands.insertContent({
+            attrs: options,
+            type: this.name,
+          }),
 
-  // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
-  renderHTML({ HTMLAttributes }) {
-    return [
-      'iframe',
-      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
-        width: '800',
-        height: '450',
-        allowfullscreen: 'true',
-      }),
-    ];
+      unsetFigma:
+        () =>
+        ({ commands }) =>
+          commands.deleteRange({
+            from: 0,
+            to: -1,
+          }),
+    };
   },
 
   addInputRules() {
@@ -84,7 +57,7 @@ export const Figma = Node.create({
       new InputRule({
         find: figmaRegex,
         handler: ({ match, commands }) => {
-          const url = match[0];
+          const [url] = match;
           const embedSrc = createEmbedSrc(url);
 
           commands.setFigma({ src: embedSrc });
@@ -96,26 +69,12 @@ export const Figma = Node.create({
   addProseMirrorPlugins() {
     return [
       new Plugin({
-        key: new PluginKey('figmaEmbedPlugin'),
+        key: new PluginKey("figmaEmbedPlugin"),
         props: {
-          handlePaste: (view, event) => {
-            const text = event.clipboardData?.getData('text/plain');
-            if (text && figmaRegex.test(text)) {
-              const embedSrc = createEmbedSrc(text);
-              view.dispatch(
-                view.state.tr.replaceSelectionWith(
-                  this.type.create({ src: embedSrc })
-                )
-              );
-              return true;
-            }
-            return false;
-          },
-
           // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
           handleDOMEvents: {
             drop: (view, event) => {
-              const text = event.dataTransfer?.getData('text/plain');
+              const text = event.dataTransfer?.getData("text/plain");
               if (text && figmaRegex.test(text)) {
                 const embedSrc = createEmbedSrc(text);
                 const coordinates = view.posAtCoords({
@@ -135,7 +94,45 @@ export const Figma = Node.create({
               return false;
             },
           },
+
+          handlePaste: (view, event) => {
+            const text = event.clipboardData?.getData("text/plain");
+            if (text && figmaRegex.test(text)) {
+              const embedSrc = createEmbedSrc(text);
+              view.dispatch(
+                view.state.tr.replaceSelectionWith(
+                  this.type.create({ src: embedSrc })
+                )
+              );
+              return true;
+            }
+            return false;
+          },
         },
+      }),
+    ];
+  },
+  atom: true,
+  group: "block",
+  name: "figma",
+
+  // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
+  parseHTML() {
+    return [
+      {
+        tag: 'iframe[src*="figma.com"]',
+      },
+    ];
+  },
+
+  // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
+  renderHTML({ HTMLAttributes }) {
+    return [
+      "iframe",
+      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
+        allowfullscreen: "true",
+        height: "450",
+        width: "800",
       }),
     ];
   },

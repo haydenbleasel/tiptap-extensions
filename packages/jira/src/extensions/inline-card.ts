@@ -1,15 +1,15 @@
-import { Node, mergeAttributes } from '@tiptap/core';
+import { Node, mergeAttributes } from "@tiptap/core";
 
 export const InlineCard = Node.create({
-  name: 'inlineCard',
-  group: 'inline',
-  inline: true,
-  atom: true,
   addAttributes() {
     return {
       url: { default: null },
     };
   },
+  atom: true,
+  group: "inline",
+  inline: true,
+  name: "inlineCard",
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
     return [{ tag: 'a[data-type="inlineCard"]' }];
@@ -17,9 +17,9 @@ export const InlineCard = Node.create({
   // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ node, HTMLAttributes }) {
     return [
-      'a',
+      "a",
       mergeAttributes(HTMLAttributes, {
-        'data-type': 'inlineCard',
+        "data-type": "inlineCard",
       }),
       node.attrs.url,
     ];

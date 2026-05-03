@@ -23,7 +23,7 @@ First, add Iframely's [embedjs](https://iframely.com/docs/embedjs) to your proje
 Then, add the extension to your editor:
 
 ```ts
-import { Iframely } from 'tiptap-extension-iframely';
+import { Iframely } from "tiptap-extension-iframely";
 
 const editor = new Editor({
   extensions: [Iframely],
@@ -33,14 +33,9 @@ const editor = new Editor({
 Once it's installed, you can add a new Iframely node with:
 
 ```ts
-const src = ''; // The URL you want to embed!
+const src = ""; // The URL you want to embed!
 
-editor
-  .chain()
-  .focus()
-  .deleteRange(range)
-  .setIframelyEmbed({ src })
-  .run();
+editor.chain().focus().deleteRange(range).setIframelyEmbed({ src }).run();
 ```
 
 I also recommend adding the following Tailwind CSS to your project:
@@ -56,7 +51,7 @@ I also recommend adding the following Tailwind CSS to your project:
 If you are running this in a headless environment, you can use the Server extension instead:
 
 ```ts
-import { Iframely } from 'tiptap-extension-iframely/server';
+import { Iframely } from "tiptap-extension-iframely/server";
 
 const editor = new Editor({
   extensions: [Iframely],
