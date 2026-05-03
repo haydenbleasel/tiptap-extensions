@@ -41,8 +41,8 @@ jobs:
         with:
           version: bun run version-packages
           publish: bun run release
-          commit: "chore: version packages"
-          title: "chore: version packages"
+          commit: "Version Packages"
+          title: "Version Packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: "" # Workaround for https://github.com/changesets/action/pull/545
