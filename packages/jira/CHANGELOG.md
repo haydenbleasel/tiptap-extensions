@@ -1,3 +1,14 @@
+## 1.1.0
+
+### Minor Changes
+
+- c5e33c0: Upgrade to Tiptap 3
+
+### Patch Changes
+
+- fea977f: Fix `unsetFigma` deleting an invalid range (`to: -1`) — now removes the figma node from the document. Fix `TextColor` mark not capturing the `color` attribute on parse — value is now read in the parse rule's `getAttrs` (per-attribute `parseHTML` is skipped by Tiptap for style-match parse rules).
+- 0132f31: Merge into monorepo, misc cleanup
+
 ## 1.0.10
 
 ### Patch Changes
