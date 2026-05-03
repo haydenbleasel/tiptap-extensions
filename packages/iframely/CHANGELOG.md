@@ -1,3 +1,13 @@
+## 1.1.0
+
+### Minor Changes
+
+- c5e33c0: Upgrade to Tiptap 3
+
+### Patch Changes
+
+- 0132f31: Merge into monorepo, misc cleanup
+
 ## 1.0.4
 
 ### Patch Changes
