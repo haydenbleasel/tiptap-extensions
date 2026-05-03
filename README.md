@@ -15,11 +15,11 @@ A collection of [Tiptap](https://tiptap.dev/) extensions, versioned and released
 ## Development
 
 ```bash
-pnpm install
-pnpm build       # build all packages
-pnpm dev         # watch all packages
-pnpm typecheck
-pnpm lint
+bun install
+bun run build       # build all packages
+bun run dev         # watch all packages
+bun run typecheck
+bun run check
 ```
 
 ## Releasing
@@ -27,7 +27,7 @@ pnpm lint
 This repo uses [Changesets](https://github.com/changesets/changesets). After making a change:
 
 ```bash
-pnpm changeset   # describe the change + select bump
+bun run changeset   # describe the change + select bump
 git commit -am "..." && git push
 ```
 

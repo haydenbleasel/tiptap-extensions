@@ -51,7 +51,7 @@ You'll also need the following extensions from Tiptap to use this package:
 ## Installation
 
 ```bash
-pnpm add tiptap-extension-jira
+bun add tiptap-extension-jira
 ```
 
 ## Usage

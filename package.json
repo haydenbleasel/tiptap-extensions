@@ -12,14 +12,17 @@
     "type": "git",
     "url": "git+https://github.com/haydenbleasel/tiptap-extensions.git"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "type": "module",
   "scripts": {
-    "build": "pnpm -r build",
-    "dev": "pnpm -r --parallel dev",
-    "typecheck": "pnpm -r typecheck",
+    "build": "bun --filter='*' run build",
+    "dev": "bun --filter='*' run dev",
+    "typecheck": "bun --filter='*' run typecheck",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish",
+    "release": "bun run build && changeset publish",
     "check": "ultracite check",
     "fix": "ultracite fix"
   },
@@ -35,5 +38,5 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@11.0.4"
+  "packageManager": "bun@1.3.13"
 }

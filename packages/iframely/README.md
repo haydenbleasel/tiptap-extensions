@@ -7,7 +7,7 @@ A [Tiptap](https://tiptap.dev/) extension for adding embedded content with Ifram
 ## Installation
 
 ```bash
-pnpm add tiptap-extension-iframely
+bun add tiptap-extension-iframely
 ```
 
 ## Usage

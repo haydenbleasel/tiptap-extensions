@@ -9,7 +9,7 @@ A [Tiptap](https://tiptap.dev/) extension for hydrating Figma designs in a TipTa
 ## Installation
 
 ```bash
-pnpm add tiptap-extension-figma
+bun add tiptap-extension-figma
 ```
 
 ## Usage

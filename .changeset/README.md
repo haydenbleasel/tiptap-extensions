@@ -6,6 +6,6 @@ We have a quick list of common questions to get you started engaging with this p
 
 ## Adding a changeset
 
-Run `pnpm changeset` from the repo root, select the package(s) you've changed, choose the bump (patch / minor / major), and write a one-line summary. A markdown file will be added to this folder. Commit it alongside your code change.
+Run `bun run changeset` from the repo root, select the package(s) you've changed, choose the bump (patch / minor / major), and write a one-line summary. A markdown file will be added to this folder. Commit it alongside your code change.
 
 On merge to `main`, the release workflow opens a "Version Packages" PR that consumes the changeset files, bumps versions, and updates `packages/*/CHANGELOG.md`. Merging that PR publishes the affected packages to npm.

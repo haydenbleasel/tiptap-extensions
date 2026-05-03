@@ -12,17 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
+      - uses: oven-sh/setup-bun@v2
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
+      - run: bun install --frozen-lockfile
 
-      - run: pnpm install --frozen-lockfile
+      - run: bun run check
 
-      - run: pnpm lint
+      - run: bun run typecheck
 
-      - run: pnpm -r typecheck
-
-      - run: pnpm -r build
+      - run: bun run build
