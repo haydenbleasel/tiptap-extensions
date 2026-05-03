@@ -5,9 +5,7 @@ export const Mention = TiptapMention.extend({
     return {
       accessLevel: {
         default: "",
-        // biome-ignore lint/style/useNamingConvention: "This is a Tiptap property"
         parseHTML: (element) => element.dataset.accessLevel,
-        // biome-ignore lint/style/useNamingConvention: "This is a Tiptap property"
         renderHTML: (attributes) => {
           if (!attributes.accessLevel) {
             return {};
@@ -18,10 +16,8 @@ export const Mention = TiptapMention.extend({
       id: {
         default: null,
 
-        // biome-ignore lint/style/useNamingConvention: "This is a Tiptap property"
         parseHTML: (element) => element.dataset.id,
 
-        // biome-ignore lint/style/useNamingConvention: "This is a Tiptap property"
         renderHTML: (attributes) => {
           if (!attributes.id) {
             return {};
@@ -32,9 +28,7 @@ export const Mention = TiptapMention.extend({
       text: {
         default: null,
 
-        // biome-ignore lint/style/useNamingConvention: "This is a Tiptap property"
         parseHTML: (element) => element.dataset.text,
-        // biome-ignore lint/style/useNamingConvention: "This is a Tiptap property"
         renderHTML: (attributes) => {
           if (!attributes.text) {
             return {};
@@ -47,11 +41,9 @@ export const Mention = TiptapMention.extend({
 
   name: "mention",
 }).configure({
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap property"
   HTMLAttributes: {
     "data-type": "mention",
   },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap property"
   renderHTML({ options, node }) {
     if (node.attrs.text) {
       return node.attrs.text;

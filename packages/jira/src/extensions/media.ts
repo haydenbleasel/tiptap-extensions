@@ -14,11 +14,9 @@ export const Media = Node.create({
   atom: true,
   group: "block",
   name: "media",
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
     return [{ tag: "img" }];
   },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ node, HTMLAttributes }) {
     return [
       "img",

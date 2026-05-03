@@ -10,11 +10,9 @@ export const InlineCard = Node.create({
   group: "inline",
   inline: true,
   name: "inlineCard",
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
     return [{ tag: 'a[data-type="inlineCard"]' }];
   },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ node, HTMLAttributes }) {
     return [
       "a",

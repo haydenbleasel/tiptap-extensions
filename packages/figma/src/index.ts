@@ -71,7 +71,6 @@ export const Figma = Node.create({
       new Plugin({
         key: new PluginKey("figmaEmbedPlugin"),
         props: {
-          // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
           handleDOMEvents: {
             drop: (view, event) => {
               const text = event.dataTransfer?.getData("text/plain");
@@ -116,7 +115,6 @@ export const Figma = Node.create({
   group: "block",
   name: "figma",
 
-  // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
   parseHTML() {
     return [
       {
@@ -125,7 +123,6 @@ export const Figma = Node.create({
     ];
   },
 
-  // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
   renderHTML({ HTMLAttributes }) {
     return [
       "iframe",

@@ -12,7 +12,6 @@ export const Figma = Node.create({
   group: "block",
   name: "figma",
 
-  // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
   parseHTML() {
     return [
       {
@@ -21,7 +20,6 @@ export const Figma = Node.create({
     ];
   },
 
-  // biome-ignore lint/style/useNamingConvention: "This is a TipTap extension property"
   renderHTML({ HTMLAttributes }) {
     return [
       "iframe",

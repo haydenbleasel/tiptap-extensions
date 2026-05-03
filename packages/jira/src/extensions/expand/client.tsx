@@ -25,11 +25,9 @@ export const ExpandClient = Node.create({
   content: "block+",
   group: "block",
   name: "expand",
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap node property"
   parseHTML() {
     return [{ tag: "div[data-expand-title]" }];
   },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap node property"
   renderHTML({ node, HTMLAttributes }) {
     return [
       "div",

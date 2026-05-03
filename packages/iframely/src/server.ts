@@ -13,7 +13,6 @@ export const Iframely = Node.create({
   group: "block",
   name: "iframely",
 
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap extension property"
   parseHTML() {
     return [
       {
@@ -22,7 +21,6 @@ export const Iframely = Node.create({
     ];
   },
 
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap extension property"
   renderHTML({ HTMLAttributes }) {
     return [
       "div",

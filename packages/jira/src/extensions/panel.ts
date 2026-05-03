@@ -9,11 +9,9 @@ export const Panel = Node.create({
   content: "block+",
   group: "block",
   name: "panel",
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
     return [{ tag: "div[data-panel-type]" }];
   },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ node, HTMLAttributes }) {
     return [
       "div",

@@ -8,11 +8,9 @@ export const UndefinedNode = Node.create({
   group: "inline",
   inline: true,
   name: "undefined",
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
     return [{ tag: 'span[data-type="undefined"]' }];
   },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ HTMLAttributes }) {
     return [
       "span",

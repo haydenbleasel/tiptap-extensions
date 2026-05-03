@@ -13,11 +13,9 @@ export const Status = Node.create({
   group: "inline",
   inline: true,
   name: "status",
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   parseHTML() {
     return [{ tag: 'span[data-type="status"]' }];
   },
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap mark property"
   renderHTML({ node, HTMLAttributes }) {
     return [
       "span",
