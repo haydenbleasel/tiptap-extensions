@@ -1,7 +1,7 @@
 ---
-"tiptap-extension-iframely": patch
-"tiptap-extension-figma": patch
-"tiptap-extension-jira": patch
+"tiptap-extension-iframely": minor
+"tiptap-extension-figma": minor
+"tiptap-extension-jira": minor
 ---
 
 Upgrade to Tiptap 3
