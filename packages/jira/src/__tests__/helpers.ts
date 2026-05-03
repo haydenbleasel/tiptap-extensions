@@ -41,7 +41,7 @@ export const serializeDocToHTML = (doc: PMNode) => {
     doc.content
   );
   const container = document.createElement("div");
-  container.appendChild(fragment);
+  container.append(fragment);
   return container.innerHTML;
 };
 
@@ -57,7 +57,7 @@ export const renderNodeToHTML = (
   );
   const dom = DOMSerializer.fromSchema(schema).serializeNode(node);
   const container = document.createElement("div");
-  container.appendChild(dom);
+  container.append(dom);
   return container.innerHTML;
 };
 

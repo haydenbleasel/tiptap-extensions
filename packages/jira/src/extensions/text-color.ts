@@ -13,8 +13,8 @@ export const TextColor = Mark.create({
   parseHTML() {
     return [
       {
-        style: "color",
         getAttrs: (value) => ({ color: value }),
+        style: "color",
       },
     ];
   },

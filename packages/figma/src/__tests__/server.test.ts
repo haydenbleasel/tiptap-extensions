@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+
 import { Figma } from "../server";
 import {
   buildSchema,
@@ -31,7 +32,7 @@ describe("Figma (server)", () => {
     expect(html.startsWith("<iframe")).toBe(true);
   });
 
-  test("parses an `<iframe src=\"...figma.com...\">` back into a figma node", () => {
+  test('parses an `<iframe src="...figma.com...">` back into a figma node', () => {
     const doc = parseHTMLToDoc(
       '<iframe src="https://www.figma.com/embed?url=foo"></iframe>',
       schema

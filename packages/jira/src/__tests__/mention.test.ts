@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+
 import { Mention } from "../extensions/mention";
 import {
   buildSchema,
@@ -30,7 +31,7 @@ describe("Mention", () => {
     expect(attrs.accessLevel.default).toBe("");
   });
 
-  test("renders with `data-type=\"mention\"`", () => {
+  test('renders with `data-type="mention"`', () => {
     const html = renderNodeToHTML(schema, "mention", {
       id: "user-1",
       text: "@Hayden",

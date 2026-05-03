@@ -1,6 +1,8 @@
 import { describe, expect, test } from "bun:test";
+
 import { Editor } from "@tiptap/core";
 import type { EditorView } from "@tiptap/pm/view";
+
 import { Figma } from "../index";
 import {
   Document,
@@ -17,10 +19,10 @@ const buildEditor = () =>
   new Editor({ extensions: [Document, Paragraph, Text, Figma] });
 
 const findFigma = (editor: Editor) => {
-  const collected: Array<{ type: string; attrs: Record<string, unknown> }> = [];
+  const collected: { type: string; attrs: Record<string, unknown> }[] = [];
   editor.state.doc.descendants((node) => {
     if (node.type.name === "figma") {
-      collected.push({ type: node.type.name, attrs: node.attrs });
+      collected.push({ attrs: node.attrs, type: node.type.name });
     }
   });
   return collected;
@@ -188,14 +190,16 @@ describe("Figma (client)", () => {
 
       const event = new Event("drop") as DragEvent;
       Object.defineProperty(event, "dataTransfer", {
-        value: { getData: (t: string) => (t === "text/plain" ? VALID_FIGMA_URL : "") },
+        value: {
+          getData: (t: string) => (t === "text/plain" ? VALID_FIGMA_URL : ""),
+        },
       });
       Object.defineProperty(event, "clientX", { value: 0 });
       Object.defineProperty(event, "clientY", { value: 0 });
 
       // Stub posAtCoords — without a rendered DOM the real one returns null.
       const original = editor.view.posAtCoords;
-      editor.view.posAtCoords = () => ({ pos: 1, inside: -1 });
+      editor.view.posAtCoords = () => ({ inside: -1, pos: 1 });
 
       const handled = drop(editor.view, event);
       expect(handled).toBe(true);

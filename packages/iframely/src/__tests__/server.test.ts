@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+
 import { Iframely } from "../server";
 import {
   buildSchema,
@@ -22,7 +23,7 @@ describe("Iframely (server)", () => {
     expect(node.spec.attrs?.src).toEqual({ default: null });
   });
 
-  test("renders to `<div data-type=\"iframely-embed\">` with src passed through", () => {
+  test('renders to `<div data-type="iframely-embed">` with src passed through', () => {
     const html = renderNodeToHTML(schema, "iframely", {
       src: "https://iframe.ly/abc123",
     });
@@ -31,7 +32,7 @@ describe("Iframely (server)", () => {
     expect(html.startsWith("<div")).toBe(true);
   });
 
-  test("parses `<div data-type=\"iframely-embed\">` back into an iframely node", () => {
+  test('parses `<div data-type="iframely-embed">` back into an iframely node', () => {
     const doc = parseHTMLToDoc(
       '<div data-type="iframely-embed"></div>',
       schema

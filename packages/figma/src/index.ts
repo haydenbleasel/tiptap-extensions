@@ -53,7 +53,6 @@ export const Figma = Node.create({
               size = node.nodeSize;
               return false;
             }
-            return undefined;
           });
           if (pos === null) {
             return false;

@@ -1,5 +1,7 @@
 import { describe, expect, test } from "bun:test";
+
 import { DOMSerializer } from "@tiptap/pm/model";
+
 import { Em } from "../extensions/em";
 import { Strong } from "../extensions/strong";
 import { SubSup } from "../extensions/subsup";
@@ -128,12 +130,12 @@ describe("TextColor mark", () => {
     expect(serializeDocToHTML(doc)).toContain("color: rgb(0, 0, 255)");
   });
 
-  test("renders a constructed textColor mark as a span with `style=\"color: ...\"`", () => {
+  test('renders a constructed textColor mark as a span with `style="color: ..."`', () => {
     const mark = schema.marks.textColor.create({ color: "blue" });
     const text = schema.text("hi", [mark]);
     const paragraph = schema.nodes.paragraph.create(null, text);
     const tmp = document.createElement("div");
-    tmp.appendChild(
+    tmp.append(
       DOMSerializer.fromSchema(schema).serializeFragment(paragraph.content)
     );
     expect(tmp.innerHTML).toContain("color: blue");

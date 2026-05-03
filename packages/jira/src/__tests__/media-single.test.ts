@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+
 import { Media } from "../extensions/media";
 import { MediaSingleClient } from "../extensions/media-single/client";
 import { MediaSingleServer } from "../extensions/media-single/server";

@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+
 import { DateNode } from "../extensions/date";
 import { InlineCard } from "../extensions/inline-card";
 import { Status } from "../extensions/status";
@@ -21,7 +22,7 @@ describe("DateNode", () => {
     expect(node.spec.attrs?.timestamp).toEqual({ default: null });
   });
 
-  test("renders a `<time data-type=\"date\" datetime=...>` with a localized date string", () => {
+  test('renders a `<time data-type="date" datetime=...>` with a localized date string', () => {
     const ts = Date.UTC(2024, 0, 15);
     const html = renderNodeToHTML(schema, "date", { timestamp: String(ts) });
     expect(html).toContain('data-type="date"');
@@ -29,7 +30,7 @@ describe("DateNode", () => {
     expect(html.startsWith("<time")).toBe(true);
   });
 
-  test("parses `<time data-type=\"date\">` back into a date node", () => {
+  test('parses `<time data-type="date">` back into a date node', () => {
     const doc = parseHTMLToDoc(
       '<p><time data-type="date" datetime="123"></time></p>',
       schema
@@ -58,7 +59,7 @@ describe("InlineCard", () => {
     expect(html).toContain("https://jira.atlassian.com/browse/X-1");
   });
 
-  test("parses `<a data-type=\"inlineCard\">` back into an inlineCard node", () => {
+  test('parses `<a data-type="inlineCard">` back into an inlineCard node', () => {
     const doc = parseHTMLToDoc(
       '<p><a data-type="inlineCard">x</a></p>',
       schema
@@ -82,7 +83,7 @@ describe("Status", () => {
     expect(attrs.text.default).toBeNull();
   });
 
-  test("renders to `<span data-type=\"status\">` with colored style and text content", () => {
+  test('renders to `<span data-type="status">` with colored style and text content', () => {
     const html = renderNodeToHTML(schema, "status", {
       color: "red",
       text: "Open",
@@ -92,7 +93,7 @@ describe("Status", () => {
     expect(html).toContain("Open");
   });
 
-  test("parses `<span data-type=\"status\">` back into a status node", () => {
+  test('parses `<span data-type="status">` back into a status node', () => {
     const doc = parseHTMLToDoc(
       '<p><span data-type="status">In Progress</span></p>',
       schema
@@ -111,13 +112,13 @@ describe("UndefinedNode", () => {
     expect(node.isAtom).toBe(true);
   });
 
-  test("renders to a `<span data-type=\"undefined\">` placeholder", () => {
+  test('renders to a `<span data-type="undefined">` placeholder', () => {
     const html = renderNodeToHTML(schema, "undefined");
     expect(html).toContain('data-type="undefined"');
     expect(html.startsWith("<span")).toBe(true);
   });
 
-  test("parses `<span data-type=\"undefined\">` back", () => {
+  test('parses `<span data-type="undefined">` back', () => {
     const doc = parseHTMLToDoc(
       '<p><span data-type="undefined"></span></p>',
       schema

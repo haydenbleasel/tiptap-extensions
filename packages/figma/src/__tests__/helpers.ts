@@ -41,7 +41,7 @@ export const serializeDocToHTML = (doc: ReturnType<typeof parseHTMLToDoc>) => {
     doc.content
   );
   const container = document.createElement("div");
-  container.appendChild(fragment);
+  container.append(fragment);
   return container.innerHTML;
 };
 
@@ -53,6 +53,6 @@ export const renderNodeToHTML = (
   const node = schema.nodes[nodeName].create(attrs);
   const dom = DOMSerializer.fromSchema(schema).serializeNode(node);
   const container = document.createElement("div");
-  container.appendChild(dom);
+  container.append(dom);
   return container.innerHTML;
 };

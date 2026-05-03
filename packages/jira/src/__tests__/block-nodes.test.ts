@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+
 import { Media } from "../extensions/media";
 import { MediaGroup } from "../extensions/media-group";
 import { Panel } from "../extensions/panel";
@@ -58,7 +59,7 @@ describe("MediaGroup", () => {
     expect(node.spec.content).toBe("media+");
   });
 
-  test("parses `<div data-type=\"mediaGroup\">` containing `<img>` children", () => {
+  test('parses `<div data-type="mediaGroup">` containing `<img>` children', () => {
     const doc = parseHTMLToDoc(
       '<div data-type="mediaGroup"><img src="a"><img src="b"></div>',
       schema
@@ -67,7 +68,7 @@ describe("MediaGroup", () => {
     expect(findNode(doc, "media")).toHaveLength(2);
   });
 
-  test("renders back to a `<div data-type=\"mediaGroup\">`", () => {
+  test('renders back to a `<div data-type="mediaGroup">`', () => {
     const doc = parseHTMLToDoc(
       '<div data-type="mediaGroup"><img src="a"></div>',
       schema

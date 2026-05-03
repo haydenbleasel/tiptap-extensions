@@ -1,5 +1,7 @@
 import { describe, expect, test } from "bun:test";
+
 import { Editor } from "@tiptap/core";
+
 import { Iframely } from "../index";
 import {
   Document,
@@ -21,12 +23,12 @@ describe("Iframely (client)", () => {
       expect(node.isAtom).toBe(true);
     });
 
-    test("renders to a `<div data-type=\"iframely-embed\">` marker", () => {
+    test('renders to a `<div data-type="iframely-embed">` marker', () => {
       const html = renderNodeToHTML(schema, "iframely", { src: "https://x" });
       expect(html).toContain('data-type="iframely-embed"');
     });
 
-    test("parses the `<div data-type=\"iframely-embed\">` marker back", () => {
+    test('parses the `<div data-type="iframely-embed">` marker back', () => {
       const doc = parseHTMLToDoc(
         '<div data-type="iframely-embed"></div>',
         schema
@@ -51,9 +53,17 @@ describe("Iframely (client)", () => {
 
       const json = editor.getJSON();
       const flat: { type?: string; attrs?: Record<string, unknown> }[] = [];
-      const walk = (node: { type?: string; attrs?: Record<string, unknown>; content?: typeof flat }) => {
+      const walk = (node: {
+        type?: string;
+        attrs?: Record<string, unknown>;
+        content?: typeof flat;
+      }) => {
         flat.push(node);
-        node.content?.forEach(walk);
+        if (node.content) {
+          for (const child of node.content) {
+            walk(child);
+          }
+        }
       };
       walk(json as never);
 
