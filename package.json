@@ -26,7 +26,8 @@
     "check": "ultracite check",
     "fix": "ultracite fix",
     "test": "bun --filter='*' run test",
-    "test:coverage": "bun test --coverage"
+    "test:coverage": "bun test --coverage",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.0",
@@ -36,6 +37,7 @@
     "@typescript/native-preview": "^7.0.0-dev.20260503.1",
     "bun-types": "^1.3.13",
     "happy-dom": "^20.9.0",
+    "husky": "^9.1.7",
     "oxfmt": "^0.47.0",
     "oxlint": "^1.62.0",
     "tsup": "^8.5.1",
