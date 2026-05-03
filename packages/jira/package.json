@@ -1,0 +1,77 @@
+{
+  "name": "tiptap-extension-jira",
+  "version": "1.0.10",
+  "description": "A collection of Tiptap extensions enabling bidirectional sync with Jira.",
+  "keywords": [
+    "extension",
+    "jira",
+    "tiptap"
+  ],
+  "homepage": "https://github.com/haydenbleasel/tiptap-extensions/tree/main/packages/jira#readme",
+  "bugs": {
+    "url": "https://github.com/haydenbleasel/tiptap-extensions/issues"
+  },
+  "license": "ISC",
+  "author": "Hayden Bleasel <hello@haydenbleasel.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydenbleasel/tiptap-extensions.git",
+    "directory": "packages/jira"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./server": {
+      "import": {
+        "types": "./dist/server.d.mts",
+        "default": "./dist/server.mjs"
+      },
+      "require": {
+        "types": "./dist/server.d.ts",
+        "default": "./dist/server.js"
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "prepublishOnly": "bun run build",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@tiptap/core": "^2.10.3",
+    "@tiptap/extension-mention": "^2.10.3",
+    "@tiptap/pm": "^2.10.3",
+    "@tiptap/react": "^2.10.3",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "peerDependencies": {
+    "@tiptap/core": "^2.10.3",
+    "@tiptap/extension-mention": "^2.10.3",
+    "@tiptap/pm": "^2.10.3",
+    "@tiptap/react": "^2.10.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

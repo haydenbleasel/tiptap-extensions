@@ -1,6 +1,7 @@
-import { Node, type NodeViewProps, mergeAttributes } from '@tiptap/core';
-import { NodeViewWrapper, ReactNodeViewRenderer } from '@tiptap/react';
-import { useEffect, useRef } from 'react';
+import { Node, mergeAttributes } from "@tiptap/core";
+import type { NodeViewProps } from "@tiptap/core";
+import { NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react";
+import { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
@@ -10,22 +11,15 @@ declare global {
   }
 }
 
-declare module '@tiptap/core' {
+declare module "@tiptap/core" {
   interface Commands<ReturnType> {
     iframely: {
-      setIframelyEmbed: (options: {
-        src: string;
-      }) => ReturnType;
+      setIframelyEmbed: (options: { src: string }) => ReturnType;
     };
   }
 }
 
 export const Iframely = Node.create({
-  name: 'iframely',
-  group: 'block',
-  atom: true,
-  draggable: true,
-
   addAttributes() {
     return {
       src: {
@@ -34,33 +28,15 @@ export const Iframely = Node.create({
     };
   },
 
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap extension property"
-  parseHTML() {
-    return [
-      {
-        tag: 'div[data-type="iframely-embed"]',
-      },
-    ];
-  },
-
-  // biome-ignore lint/style/useNamingConvention: "This is a Tiptap extension property"
-  renderHTML({ HTMLAttributes }) {
-    return [
-      'div',
-      mergeAttributes(HTMLAttributes, { 'data-type': 'iframely-embed' }),
-    ];
-  },
-
   addCommands() {
     return {
       setIframelyEmbed:
         (options: { src: string }) =>
-        ({ commands }) => {
-          return commands.insertContent({
-            type: this.name,
+        ({ commands }) =>
+          commands.insertContent({
             attrs: options,
-          });
-        },
+            type: this.name,
+          }),
     };
   },
 
@@ -74,7 +50,7 @@ export const Iframely = Node.create({
           return;
         }
 
-        if (typeof window.iframely !== 'undefined') {
+        if (window.iframely !== undefined) {
           window.iframely.load(containerRef.current, node.attrs.src);
           loaded.current = true;
         }
@@ -89,5 +65,24 @@ export const Iframely = Node.create({
         </NodeViewWrapper>
       );
     });
+  },
+  atom: true,
+  draggable: true,
+  group: "block",
+  name: "iframely",
+
+  parseHTML() {
+    return [
+      {
+        tag: 'div[data-type="iframely-embed"]',
+      },
+    ];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return [
+      "div",
+      mergeAttributes(HTMLAttributes, { "data-type": "iframely-embed" }),
+    ];
   },
 });
