@@ -18,8 +18,8 @@ A collection of [Tiptap](https://tiptap.dev/) extensions, versioned and released
 bun install
 bun run build       # build all packages
 bun run dev         # watch all packages
-bun run typecheck
-bun run check
+bun run typecheck   # check types
+bun run check       # check linting / formatting
 ```
 
 ## Releasing
