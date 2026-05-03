@@ -24,12 +24,14 @@
     "version-packages": "changeset version",
     "release": "bun run build && changeset publish",
     "check": "ultracite check",
-    "fix": "ultracite fix"
+    "fix": "ultracite fix",
+    "test:coverage": "bun test --coverage"
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.0",
     "@types/node": "^25.6.0",
     "@typescript/native-preview": "^7.0.0-dev.20260503.1",
+    "happy-dom": "^20.9.0",
     "oxfmt": "^0.47.0",
     "oxlint": "^1.62.0",
     "tsup": "^8.5.1",
