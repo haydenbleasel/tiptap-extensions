@@ -54,6 +54,7 @@
     "prepublishOnly": "bun run build",
     "build": "tsup",
     "dev": "tsup --watch",
+    "test": "bun test",
     "typecheck": "tsgo --noEmit"
   },
   "devDependencies": {
