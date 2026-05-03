@@ -28,9 +28,11 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org
 
-      # Ensure npm 11.5.1 or later is installed
+      # Ensure npm 11.5.1 or later is installed.
+      # --force bypasses the self-replace bug in Node 22's bundled npm
+      # (missing promise-retry in the in-tree @npmcli/arborist).
       - name: Update npm
-        run: npm install -g npm@latest
+        run: npm install -g --force npm@latest
 
       - run: bun install --frozen-lockfile
 
