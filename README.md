@@ -1,66 +1,34 @@
-# tiptap-extension-iframely
+# tiptap-extensions
 
-[![Version](https://img.shields.io/npm/v/tiptap-extension-iframely.svg)](https://www.npmjs.org/package/tiptap-extension-iframely) [![Build Status](https://github.com/haydenbleasel/tiptap-extension-iframely/actions/workflows/push.yml/badge.svg?branch=main)](https://github.com/haydenbleasel/tiptap-extension-iframely/actions?query=branch%3Amain)
+[![CI](https://github.com/haydenbleasel/tiptap-extensions/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/haydenbleasel/tiptap-extensions/actions/workflows/ci.yml?query=branch%3Amain)
 
-A [Tiptap](https://tiptap.dev/) extension for adding embedded content with Iframely.
+A collection of [Tiptap](https://tiptap.dev/) extensions, versioned and released independently.
 
-## Installation
+## Packages
+
+| Package | Version | Description |
+|---------|---------|-------------|
+| [`tiptap-extension-iframely`](./packages/iframely) | [![npm](https://img.shields.io/npm/v/tiptap-extension-iframely.svg)](https://www.npmjs.com/package/tiptap-extension-iframely) | Embedded content via Iframely |
+| [`tiptap-extension-figma`](./packages/figma) | [![npm](https://img.shields.io/npm/v/tiptap-extension-figma.svg)](https://www.npmjs.com/package/tiptap-extension-figma) | Hydrate Figma links into embeds |
+| [`tiptap-extension-jira`](./packages/jira) | [![npm](https://img.shields.io/npm/v/tiptap-extension-jira.svg)](https://www.npmjs.com/package/tiptap-extension-jira) | Bidirectional sync with Jira (ADF) |
+
+## Development
 
 ```bash
-pnpm add tiptap-extension-iframely
+pnpm install
+pnpm build       # build all packages
+pnpm dev         # watch all packages
+pnpm typecheck
+pnpm lint
 ```
 
-## Usage
+## Releasing
 
-### Client
+This repo uses [Changesets](https://github.com/changesets/changesets). After making a change:
 
-First, add Iframely's [embedjs](https://iframely.com/docs/embedjs) to your project e.g.
-
-```html
-<script async src="//cdn.iframe.ly/embed.js?api_key={API_KEY}"></script>
+```bash
+pnpm changeset   # describe the change + select bump
+git commit -am "..." && git push
 ```
 
-Then, add the extension to your editor:
-
-```ts
-import { Iframely } from 'tiptap-extension-iframely';
-
-const editor = new Editor({
-  extensions: [Iframely],
-});
-```
-
-Once it's installed, you can add a new Iframely node with:
-
-```ts
-const src = ''; // The URL you want to embed!
-
-editor
-  .chain()
-  .focus()
-  .deleteRange(range)
-  .setIframelyEmbed({ src })
-  .run();
-```
-
-I also recommend adding the following Tailwind CSS to your project:
-
-```css
-.node-iframely.ProseMirror-selectednode {
-  @apply ring ring-primary;
-}
-```
-
-### Server
-
-If you are running this in a headless environment, you can use the Server extension instead:
-
-```ts
-import { Iframely } from 'tiptap-extension-iframely/server';
-
-const editor = new Editor({
-  extensions: [Iframely],
-});
-```
-
-This Node doesn't render anything in the editor, but it stop the Editor from crashing when it encounters a Node with the name `iframely`.
+On merge to `main`, a "Version Packages" PR opens. Merging it publishes the affected packages to npm.

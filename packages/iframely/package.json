@@ -1,0 +1,69 @@
+{
+  "name": "tiptap-extension-iframely",
+  "version": "1.0.4",
+  "description": "A Tiptap extension for adding embedded content with Iframely.",
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./server": {
+      "import": {
+        "types": "./dist/server.d.mts",
+        "default": "./dist/server.mjs"
+      },
+      "require": {
+        "types": "./dist/server.d.ts",
+        "default": "./dist/server.js"
+      }
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "prepublishOnly": "pnpm build",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydenbleasel/tiptap-extensions.git",
+    "directory": "packages/iframely"
+  },
+  "keywords": ["iframely", "tiptap", "extension"],
+  "author": "Hayden Bleasel <hello@haydenbleasel.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haydenbleasel/tiptap-extensions/issues"
+  },
+  "homepage": "https://github.com/haydenbleasel/tiptap-extensions/tree/main/packages/iframely#readme",
+  "devDependencies": {
+    "@tiptap/core": "^2.10.3",
+    "@tiptap/pm": "^2.10.3",
+    "@tiptap/react": "^2.10.3",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "peerDependencies": {
+    "@tiptap/core": "^2.10.3",
+    "@tiptap/pm": "^2.10.3",
+    "@tiptap/react": "^2.10.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

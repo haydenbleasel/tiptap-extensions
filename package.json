@@ -1,79 +1,37 @@
 {
-  "name": "tiptap-extension-iframely",
-  "version": "1.0.4",
-  "description": "A Tiptap extension for adding embedded content with Iframely.",
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    },
-    "./server": {
-      "import": {
-        "types": "./dist/server.d.mts",
-        "default": "./dist/server.mjs"
-      },
-      "require": {
-        "types": "./dist/server.d.ts",
-        "default": "./dist/server.js"
-      }
-    }
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "scripts": {
-    "prepublishOnly": "pnpm build",
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/haydenbleasel/tiptap-extension-iframely.git"
-  },
-  "keywords": [
-    "iframely",
-    "tiptap",
-    "extension"
-  ],
+  "name": "tiptap-extensions",
+  "private": true,
+  "description": "A collection of Tiptap extensions.",
   "author": "Hayden Bleasel <hello@haydenbleasel.com>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/haydenbleasel/tiptap-extension-iframely/issues"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haydenbleasel/tiptap-extensions.git"
   },
-  "homepage": "https://github.com/haydenbleasel/tiptap-extension-iframely#readme",
+  "bugs": {
+    "url": "https://github.com/haydenbleasel/tiptap-extensions/issues"
+  },
+  "homepage": "https://github.com/haydenbleasel/tiptap-extensions#readme",
+  "packageManager": "pnpm@11.0.4",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@tiptap/core": "^2.10.3",
-    "@tiptap/pm": "^2.10.3",
-    "@tiptap/react": "^2.10.3",
+    "@changesets/cli": "^2.27.10",
     "@types/node": "^22.10.1",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
     "ultracite": "4.2.0"
-  },
-  "peerDependencies": {
-    "@tiptap/core": "^2.10.3",
-    "@tiptap/pm": "^2.10.3",
-    "@tiptap/react": "^2.10.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
   }
 }
