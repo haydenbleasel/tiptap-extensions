@@ -103,12 +103,29 @@ describe("TextColor mark", () => {
     expect(schema.marks.textColor.spec.attrs?.color).toEqual({ default: null });
   });
 
-  test("applies a textColor mark when parsing a span with a color style", () => {
+  test("captures the color value from a styled span on parse", () => {
     const doc = parseHTMLToDoc(
       '<p><span style="color: red">hi</span></p>',
       schema
     );
-    expect(markOnFirstText(doc)).toContain("textColor");
+    let colorAttr: string | undefined;
+    doc.descendants((node) => {
+      if (node.isText) {
+        const mark = node.marks.find((m) => m.type.name === "textColor");
+        if (mark) {
+          colorAttr = mark.attrs.color;
+        }
+      }
+    });
+    expect(colorAttr).toBe("red");
+  });
+
+  test("round-trips the color through parse → serialize", () => {
+    const doc = parseHTMLToDoc(
+      '<p><span style="color: rgb(0, 0, 255)">hi</span></p>',
+      schema
+    );
+    expect(serializeDocToHTML(doc)).toContain("color: rgb(0, 0, 255)");
   });
 
   test("renders a constructed textColor mark as a span with `style=\"color: ...\"`", () => {

@@ -5,14 +5,18 @@ export const TextColor = Mark.create({
     return {
       color: {
         default: null,
-        parseHTML: (element) => element.style.color,
         renderHTML: (attributes) => ({ style: `color: ${attributes.color}` }),
       },
     };
   },
   name: "textColor",
   parseHTML() {
-    return [{ style: "color" }];
+    return [
+      {
+        style: "color",
+        getAttrs: (value) => ({ color: value }),
+      },
+    ];
   },
   renderHTML({ HTMLAttributes }) {
     return ["span", mergeAttributes(HTMLAttributes), 0];

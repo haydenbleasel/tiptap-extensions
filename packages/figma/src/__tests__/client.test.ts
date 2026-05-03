@@ -84,6 +84,25 @@ describe("Figma (client)", () => {
       expect(typeof editor.commands.unsetFigma).toBe("function");
       editor.destroy();
     });
+
+    test("removes a figma node when one is present", () => {
+      const editor = buildEditor();
+      editor.commands.setFigma({ src: "https://figma.example/embed" });
+      expect(findFigma(editor)).toHaveLength(1);
+
+      const result = editor.commands.unsetFigma();
+      expect(result).toBe(true);
+      expect(findFigma(editor)).toHaveLength(0);
+
+      editor.destroy();
+    });
+
+    test("returns false when there is no figma node to remove", () => {
+      const editor = buildEditor();
+      const result = editor.commands.unsetFigma();
+      expect(result).toBe(false);
+      editor.destroy();
+    });
   });
 
   describe("paste handler", () => {

@@ -44,11 +44,25 @@ export const Figma = Node.create({
 
       unsetFigma:
         () =>
-        ({ commands }) =>
-          commands.deleteRange({
-            from: 0,
-            to: -1,
-          }),
+        ({ tr, state, dispatch }) => {
+          let pos: number | null = null;
+          let size = 0;
+          state.doc.descendants((node, nodePos) => {
+            if (node.type.name === this.name) {
+              pos = nodePos;
+              size = node.nodeSize;
+              return false;
+            }
+            return undefined;
+          });
+          if (pos === null) {
+            return false;
+          }
+          if (dispatch) {
+            tr.delete(pos, pos + size);
+          }
+          return true;
+        },
     };
   },
 
